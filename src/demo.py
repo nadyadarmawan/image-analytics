@@ -60,19 +60,19 @@ def main():
             sharpness_values.append(img_metrics_dict['sharpness'])
             contrast_values.append(img_metrics_dict['contrast'])
             luminance_values.append(img_metrics_dict['luminance'])
-            print(file, img_metrics_dict['luminance'])
+
             min_sharpness, max_sharpness, update_min, update_max = compare_min_max(min_sharpness, max_sharpness, img_metrics_dict['sharpness'])
-            if update_min: 
+            if update_min:
                 min_sharpness_img = img_path
             if update_max:
                 max_sharpness_img = img_path
             min_contrast, max_contrast, update_min, update_max = compare_min_max(min_contrast, max_contrast, img_metrics_dict['contrast'])
-            if update_min: 
+            if update_min:
                 min_contrast_img = img_path
             if update_max:
                 max_contrast_img = img_path
             min_lum, max_lum, update_min, update_max = compare_min_max(min_lum, max_lum, img_metrics_dict['luminance'])
-            if update_min: 
+            if update_min:
                 min_lum_img = img_path
             if update_max:
                 max_lum_img = img_path
@@ -112,7 +112,7 @@ def main():
 
         plt.figure(figsize=(16,9))
         plt.subplot(1,2,1)
-        plt.title('Number of Objects per Image')        
+        plt.title('Number of Objects per Image')
         plt.bar(list(ordered_num_per_img.keys()), list(ordered_num_per_img.values()), color ='tab:orange', width =0.4)
         plt.xticks(np.arange(len(list(object_stats_dict['num_per_img'].keys()))))
         add_bar_labels(list(ordered_num_per_img.keys()), list(ordered_num_per_img.values()), object_stats_dict['num_of_imgs'])
