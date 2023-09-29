@@ -12,7 +12,7 @@ pip install -r requirements.txt
 # Using this Repo
 Input: 
 - A directory of images,
-- (Optional) Object detection annotations in COCO JSON format (refer to `demo/annotation.json`)
+- (Optional) Object detection annotations in COCO JSON format (refer to `demo/annotations.json`)
 
 Output:
 - image sharpness,
@@ -34,15 +34,20 @@ The contrast of the image here is defined as a function of variance of all pixel
 ## Testing
 Simple test for image quality metrics:
 ```
-python src/demo.py --images ./black_and_white
+python src/demo.py --images ./demo/black_and_white
 ```
 Running the above code will output contrast and sharpness values of 0 for both black and white images, which is expected. 
 The generated luminance values are 0 for black and 255 for white, which is also expected. 
 
 ## Demo
+For demo purposes, there are 10 sample images in `./demo/images/`.
+The object detection annotations are saved as `./demo/annotations.json`.
 ```
 python src/demo.py --images ./demo/images --labels ./demo/annotations.json
 ```
 Running the above code will generate these charts:
+![Image metrics](https://github.com/nadyadarmawan/image-analytics/blob/main/docs/images_analysis.png?raw=true)
+![Annotations stats](https://github.com/nadyadarmawan/image-analytics/blob/main/docs/annotations_analysis.png?raw=true)
 
-Furthermore, for documentation purposes, below is the summary table that presents the images with minimum and maximum values for each measurement.
+<br>Furthermore, for documentation purposes, below is the summary table that presents the images with minimum and maximum values for each measurement, based on the output above.
+![Summary](https://github.com/nadyadarmawan/image-analytics/blob/main/docs/summary.png?raw=true)
