@@ -123,6 +123,8 @@ def main():
         # Get objects statistics
         object_stats_dict = get_objects_stats(labels_data)
         ordered_num_per_img = {key: object_stats_dict['num_per_img'][key] for key in sorted(object_stats_dict['num_per_img'].keys())}
+        n_imgs = object_stats_dict['num_of_imgs']
+        n_objects =  object_stats_dict['num_of_objects']
 
         # Plot annotations statistics
         plt.figure(figsize=(16,9))
@@ -131,14 +133,14 @@ def main():
         plt.title('Number of Objects per Image')
         plt.bar(list(ordered_num_per_img.keys()), list(ordered_num_per_img.values()), color ='tab:orange', width =0.4)
         plt.xticks(np.arange(len(list(object_stats_dict['num_per_img'].keys()))))
-        add_bar_labels(list(ordered_num_per_img.keys()), list(ordered_num_per_img.values()), object_stats_dict['num_of_imgs'])
+        add_bar_labels(list(ordered_num_per_img.keys()), list(ordered_num_per_img.values()), n_imgs)
         plt.xlabel('Number of objects per image')
         plt.ylabel('Number of images')
 
         plt.subplot(1,2,2)
         plt.title('Number of Objects per Class')
         plt.bar(list(object_stats_dict['num_per_class'].keys()), list(object_stats_dict['num_per_class'].values()), color ='tab:purple', width =0.4)
-        add_bar_labels(list(object_stats_dict['num_per_class'].keys()), list(object_stats_dict['num_per_class'].values()), object_stats_dict['num_of_objects'])
+        add_bar_labels(list(object_stats_dict['num_per_class'].keys()), list(object_stats_dict['num_per_class'].values()), n_objects)
         plt.xlabel('Class')
         plt.ylabel('Number of objects')
 
